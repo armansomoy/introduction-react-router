@@ -1,9 +1,16 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 
 const PostDetails = () => {
   const post = useLoaderData();
   const { title, body } = post;
+  const navigate = useNavigate();
+  const {postId} = useParams();
+  console.log(postId);
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
   return (
     <div
       style={{
@@ -16,6 +23,7 @@ const PostDetails = () => {
     >
       <h3>{title}</h3>
       <p>{body}</p>
+      <button onClick={handleGoBack}>Go back</button>
     </div>
   );
 };
